@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import organise from "../../../assets/images/organise.jpg";
 import teamwork from "../../../assets/images/teamwork.jpg";
 import work from "../../../assets/images/work.jpg";
@@ -7,7 +6,7 @@ import work from "../../../assets/images/work.jpg";
 function ImageCarousel() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    const slides = [
+    const slidingImages = [
       {
         image: organise,
         text: "Organise your workflows",
@@ -25,18 +24,6 @@ function ImageCarousel() {
       }
     ];
   
-    const nextSlide = () => {
-      setCurrentIndex((prevIndex) => 
-        prevIndex === slides.length - 1 ? 0 : prevIndex + 1
-      );
-    };
-  
-    const prevSlide = () => {
-      setCurrentIndex((prevIndex) => 
-        prevIndex === 0 ? slides.length - 1 : prevIndex - 1
-      );
-    };
-  
     useEffect(() => {
       const timer = setInterval(() => {
         nextSlide();
@@ -48,7 +35,7 @@ function ImageCarousel() {
     return (
       <div className="relative w-full shadow shadow-emerald-800">
         <div className="relative h-[40vh] md:h-[60vh] overflow-hidden">
-          {slides.map((slide, index) => (
+          {slidingImages.map((slide, index) => (
             <div
               key={index}
               className={` absolute w-full h-full transition-transform duration-500 ease-in-out ${
@@ -74,23 +61,9 @@ function ImageCarousel() {
           ))}
         </div>
   
-        {/* Navigation Buttons */}
-        {/* <button
-          onClick={prevSlide}
-          className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 text-gray-800"
-        >
-          <ChevronLeft size={24} />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 text-gray-800"
-        >
-          <ChevronRight size={24} />
-        </button> */}
-  
-        {/* Dots Indicator */}
+        {/* Image Indicator */}
         <div className="absolute bottom-0 flex w-full">
-          {slides.map((_, index) => (
+          {slidingImages.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
