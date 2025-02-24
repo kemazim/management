@@ -1,6 +1,7 @@
 import Nav from './components/navBar/Nav'
 import { Route, Routes } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
+import CreatePost from './pages/CreatePost'
 
 function App() {
 
@@ -9,8 +10,8 @@ function App() {
       <Nav/>
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
+        <Route path="/create" element={<CreatePost/>}/>
       </Routes>
-      <div></div>
     </div>
   )
 }
