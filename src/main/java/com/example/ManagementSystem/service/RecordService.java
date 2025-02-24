@@ -38,4 +38,17 @@ public class RecordService {
 
     }
 
+    public String deleteRecord(String unitNo, String icNo){
+        // Find the record by unitNo and ICNo
+        Optional<Records> recordOptional = recordRepository.findByUnitNoAndICNo(unitNo,icNo);
+
+        if (recordOptional.isEmpty()) {
+            return "Record Not Found";
+        } else {
+            // Delete the record
+            recordRepository.delete(recordOptional.get());
+            return "Record Deleted";
+        }
+    }
+
 }
