@@ -11,3 +11,13 @@ public class ManagementSystemApplication {
 	}
 
 }
+
+
+/*
+Client hantar req to controller
+controller to service
+service to repository
+repository perform db op and return result to service
+service process and send result to controller
+controller send back http response to client
+ */
