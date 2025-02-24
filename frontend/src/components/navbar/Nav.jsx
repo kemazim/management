@@ -37,7 +37,7 @@ const Nav = () => {
                 className="text-gray-600 hover:text-gray-900 px-1 py-1.5  font-medium flex gap-2 items-center max-w-3xl rounded-xl cursor-pointer text-md mr-2"
               >
                 {/* TODO: assign correct href */}
-                <Link to="/">
+                <Link to="/create">
                     Create
                 </Link>
             </motion.button>
