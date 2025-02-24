@@ -42,4 +42,9 @@ public class RecordController {
             return ResponseEntity.ok().body(result);
         }
     }
+
+    @GetMapping("get")
+    public void test() {
+        
+    }
     }

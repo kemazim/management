@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Data
-@NoArgsConstructor(force = true)
+@NoArgsConstructor
 //@AllArgsConstructor
 @Entity
 public class Records {
@@ -38,6 +38,10 @@ public class Records {
         this.contactNo = contactNo;
         this.amountDue = amountDue;
         this.rentalDate = rentalDate;
+    }
+
+    public Records() {
+
     }
 
     public String getUnitNo() {return unitNo;}
