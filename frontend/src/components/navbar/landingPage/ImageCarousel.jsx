@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import organise from "../../../assets/images/organise.jpg";
 import teamwork from "../../../assets/images/teamwork.jpg";
 import work from "../../../assets/images/work.jpg";
+import { motion } from 'motion/react';
 
 function ImageCarousel() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -36,12 +37,15 @@ function ImageCarousel() {
       <div className="relative w-full shadow shadow-emerald-800">
         <div className="relative h-[40vh] md:h-[60vh] overflow-hidden">
           {slidingImages.map((slide, index) => (
-            <div
+            <motion.div
               key={index}
-              className={` absolute w-full h-full transition-transform duration-500 ease-in-out ${
-                index === currentIndex ? 'translate-x-0' : 
-                index < currentIndex ? '-translate-x-full' : 'translate-x-full'
-              }`}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{
+                opacity: index === currentIndex ? 1 : 0,
+                x: index === currentIndex ? 0 : 50,
+              }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+              className="absolute w-full h-full"
             >
               <img
                 src={slide.image}
@@ -57,7 +61,7 @@ function ImageCarousel() {
                   {slide.p}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
   
@@ -67,7 +71,7 @@ function ImageCarousel() {
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-1/3 h-2 transition-colors ${
+              className={`w-1/3 h-2 transition-colors duration-500 ${
                 index === currentIndex ? 'bg-emerald-800/50' : 'bg-white/50'
               }`}
             />
