@@ -2,7 +2,6 @@ package com.example.ManagementSystem.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -26,6 +25,9 @@ public class Records {
     private double amountDue;
     private LocalDateTime rentalDate; // Use LocalDateTime for datetime fields
 
+    public Records(){
+
+    }
     public Records(String unitNo, double rentalRate,String ICNo, String tenantName, String email,
                    String mailingAddress,String companyName, String contactNo, double amountDue, LocalDateTime rentalDate){
         this.unitNo = unitNo;
@@ -38,10 +40,6 @@ public class Records {
         this.contactNo = contactNo;
         this.amountDue = amountDue;
         this.rentalDate = rentalDate;
-    }
-
-    public Records() {
-
     }
 
     public String getUnitNo() {return unitNo;}

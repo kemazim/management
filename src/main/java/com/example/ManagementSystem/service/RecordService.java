@@ -51,4 +51,27 @@ public class RecordService {
         }
     }
 
+    public List<Records>getAllRecords(){
+        return recordRepository.findAll();
+    }
+
+    public Optional<Records> getRecordByUnitNo(String unitNo) {
+        return recordRepository.findById(unitNo);
+    }
+
+    public Records addRecord(Records record) {
+        record.setRentalDate(LocalDateTime.now());
+        return recordRepository.save(record);
+    }
+
+    public String getCountRecord(Records record) {
+        Optional<Records> countrec = recordRepository.findById(record.getUnitNo());
+        if (countrec.isEmpty()) {
+            return "Record Not Found";
+        } else {
+            return "Record Found!";
+        }
+    }
+
+
 }
