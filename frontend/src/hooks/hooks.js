@@ -18,7 +18,7 @@ export const usePostHook = () => {
             if(!data.ok){
                 throw new Error(data.Error)
             }
-            toast.success(data.message,{id:"postSuccess"})
+            toast.success("Record Created",{id:"postSuccess"})
         } catch (error) {
             toast.error(error.message)
         }finally{
