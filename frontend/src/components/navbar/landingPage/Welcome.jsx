@@ -2,12 +2,17 @@ import React from 'react'
 import { motion } from 'motion/react'
 import { Coffee, Gauge } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'motion/react'
 
 function Welcome() {
   const navigate = useNavigate();
 
   return (
-    <div className='flex flex-col justify-center items-center'>
+    <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1, ease: "easeInOut" }}
+     className='flex flex-col justify-center items-center'>
         <div className='w-full flex justify-center py-7 bg-emerald-800/40 tracking-widest text-2xl font-bold'>
             <p>Welcome to the Management System</p>
         </div>
@@ -61,7 +66,7 @@ function Welcome() {
           </motion.button>
           </div>
         </div>
-    </div>
+    </motion.div>
   )
 }
 

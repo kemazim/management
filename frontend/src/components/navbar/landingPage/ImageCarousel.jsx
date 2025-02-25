@@ -40,7 +40,8 @@ function ImageCarousel() {
     }, []);
   
     return (
-      <div className="relative w-full shadow shadow-emerald-800">
+      <div
+       className="relative w-full shadow shadow-emerald-800">
         <div className="relative h-[40vh] md:h-[60vh] overflow-hidden">
           {slidingImages.map((slide, index) => (
             <motion.div

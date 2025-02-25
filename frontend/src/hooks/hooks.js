@@ -7,7 +7,7 @@ export const usePostHook = () => {
     const postHook = async(payload) => {
         setLoading(true);
         try {
-            const res = await fetch("http://localhost:8080/a", {
+            const res = await fetch("http://localhost:8092/record", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
