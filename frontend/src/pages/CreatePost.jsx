@@ -7,7 +7,7 @@ function CreatePost() {
   const [details, setDetails] = useState({
     unitNo: '',
     rentalRate: 0,
-    ICNo: '',
+    icno: '',
     tenantName: '',
     email: '',
     mailingAddress: '',
@@ -22,7 +22,7 @@ const {postHook , loading} = usePostHook();
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    if(!details.unitNo || !details.rentalRate || !details.ICNo || !details.tenantName || !details.email || !details.mailingAddress || !details.companyName || !details.contactNo || !details.amountDue) return toast.error("Fill in all inputs!",  {id: "createRecord", position: "bottom-center"})
+    if(!details.unitNo || !details.rentalRate || !details.icno || !details.tenantName || !details.email || !details.mailingAddress || !details.companyName || !details.contactNo || !details.amountDue) return toast.error("Fill in all inputs!",  {id: "createRecord", position: "bottom-center"})
     postHook(details);
 }
 
@@ -74,8 +74,8 @@ const handleSubmit = (e) => {
                 <input 
                     type="text"
                     className='outline rounded p-2'
-                    value={details.ICNo}
-                    onChange={(e) => setDetails({...details, ICNo: e.target.value})}
+                    value={details.icno}
+                    onChange={(e) => setDetails({...details, icno: e.target.value})}
                     placeholder='Enter NRIC '
                 />
                 </div>
