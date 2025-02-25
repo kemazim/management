@@ -38,12 +38,12 @@ const handleSubmit = (e) => {
         
         <form 
         onSubmit={handleSubmit}
-        className='flex flex-col gap-8 p-8 border-3 border-emerald-800/40 rounded-xl w-4/5 md:w-xl text-sm'>
+        className='flex flex-col gap-8 py-8 px-15 border-3 border-emerald-800/40 rounded-xl w-xl text-sm'>
           <div className='flex justify-between item gap-8'>
 
             <div className='flex flex-col gap-4'>
                 <div className="flex flex-col">
-                    <label className='mb-4 break-words'>
+                    <label className='mb-4 break-words font-semibold'>
                     Unit No.
                     </label>
                 <input 
@@ -55,11 +55,12 @@ const handleSubmit = (e) => {
                 />
                 </div>
                 <div className="flex flex-col">
-                    <label className='mb-4 break-words'>
+                    <label className='mb-4 break-words font-semibold'>
                     Rental Rate
                     </label>
                 <input 
-                    type="text"
+                    type="number"
+                    step={0.01}
                     className='outline rounded p-2'
                     value={details.rentalRate}
                     onChange={(e) => setDetails({...details, rentalRate: e.target.value})}
@@ -67,7 +68,7 @@ const handleSubmit = (e) => {
                 />
                 </div>
                 <div className="flex flex-col">
-                    <label className='mb-4 break-words'>
+                    <label className='mb-4 break-words font-semibold'>
                     NRIC
                     </label>
                 <input 
@@ -79,7 +80,7 @@ const handleSubmit = (e) => {
                 />
                 </div>
                 <div className="flex flex-col">
-                    <label className='mb-4 break-words'>
+                    <label className='mb-4 break-words font-semibold'>
                     Tenant Name
                     </label>
                 <input 
@@ -91,7 +92,7 @@ const handleSubmit = (e) => {
                 />
                 </div>
                 <div className="flex flex-col">
-                    <label className='mb-4 break-words'>
+                    <label className='mb-4 break-words font-semibold'>
                     Email
                     </label>
                 <input 
@@ -108,7 +109,7 @@ const handleSubmit = (e) => {
               <div className='flex flex-col gap-4'>
 
                 <div className="flex flex-col">
-                    <label className='mb-4 break-words'>
+                    <label className='mb-4 break-words font-semibold'>
                     Mailing Address
                     </label>
                 <input 
@@ -120,7 +121,7 @@ const handleSubmit = (e) => {
                 />
                 </div>
                 <div className="flex flex-col">
-                    <label className='mb-4 break-words'>
+                    <label className='mb-4 break-words font-semibold'>
                     Company Name
                     </label>
                 <input 
@@ -132,7 +133,7 @@ const handleSubmit = (e) => {
                 />
                 </div>
                 <div className="flex flex-col">
-                    <label className='mb-4 break-words'>
+                    <label className='mb-4 break-words font-semibold'>
                     Contact No.
                     </label>
                 <input 
@@ -144,11 +145,12 @@ const handleSubmit = (e) => {
                 />
                 </div>
                 <div className="flex flex-col">
-                    <label className='mb-4 break-words'>
+                    <label className='mb-4 break-words font-semibold'>
                     Amount Due
                     </label>
                 <input 
-                    type="text"
+                    type="number"
+                    step={0.01}
                     className='outline rounded p-2'
                     value={details.amountDue}
                     onChange={(e) => setDetails({...details, amountDue: e.target.value})}

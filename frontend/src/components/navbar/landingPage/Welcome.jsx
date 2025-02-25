@@ -39,7 +39,11 @@ function Welcome() {
               y: [-5, 5, -5], 
               opacity: [0.6, 1, 0.6] 
             }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            transition={{
+               duration: 1.5, 
+               repeat: Infinity, 
+               ease: "easeInOut" 
+              }}
             >
               <Coffee className="w-20 h-20" />
             </motion.div>
