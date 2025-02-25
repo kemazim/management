@@ -14,10 +14,10 @@ export const usePostHook = () => {
                 },
                 body: JSON.stringify(payload)
             })
-            const data = await res.json()
-            if(!data.ok){
+            if(res.status !== 200){
                 throw new Error(data.Error)
             }
+            const data = await res.json()
             toast.success("Record Created",{id:"postSuccess"})
         } catch (error) {
             toast.error(error.message)
