@@ -60,6 +60,7 @@ public class RecordService {
     }
 
     public Records addRecord(Records record) {
+        record.setRentalDate(LocalDateTime.now());
         return recordRepository.save(record);
     }
 
