@@ -4,14 +4,12 @@ import { motion } from "motion/react"
 import { Link } from 'react-router-dom';
 
 const Nav = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isCat, setIsCat] = useState(false);
 
   return (
     <nav className="bg-white shadow shadow-emerald-800 sticky top-0 z-50">
       <motion.div
         initial={{ maxHeight: 56}}
-        animate={{ maxHeight: isOpen ? 500 : 56 }}
+        animate={{ maxHeight: 56 }}
         transition={{ duration: 0.65, ease: "linear", type: "easeInOut" }}
        className="max-w-full px-4 py-2">
         {/* Content */}

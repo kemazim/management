@@ -1,8 +1,11 @@
 import React from 'react'
 import { motion } from 'motion/react'
 import { Coffee, Gauge } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 function Welcome() {
+  const navigate = useNavigate();
+
   return (
     <div className='flex flex-col justify-center items-center'>
         <div className='w-full flex justify-center py-7 bg-emerald-800/40 tracking-widest text-2xl font-bold'>
@@ -52,6 +55,7 @@ function Welcome() {
               ease: "easeInOut",
             },
           }}
+          onClick={() => navigate("/create")}
            className='border-3 p-5 rounded-full cursor-pointer font-bold'>
             Create Your Record Now!
           </motion.button>

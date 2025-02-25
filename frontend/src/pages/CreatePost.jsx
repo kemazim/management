@@ -1,92 +1,175 @@
 import React, { useState } from 'react'
+import { motion } from 'motion/react';
+import { usePostHook } from '../hooks/hooks';
+import toast from 'react-hot-toast';
 
 function CreatePost() {
-  const [formData, setFormData] = useState({
+  const [details, setDetails] = useState({
     unitNo: '',
-    rentalRate: '',
+    rentalRate: 0,
     ICNo: '',
     tenantName: '',
-    lastLogin: new Date().toISOString()
-  });
-  
+    email: '',
+    mailingAddress: '',
+    companyName: '',
+    contactNo: '',
+    amountDue: 0,
+    rentalDate: '',
+})
 
-  const handleSubmit = (e) => {
+const {postHook , loading} = usePostHook();
+
+
+const handleSubmit = (e) => {
     e.preventDefault();
-    
-  };
+    if(!details.unitNo || !details.rentalRate || !details.ICNo || !details.tenantName || !details.email || !details.mailingAddress || !details.companyName || !details.contactNo || !details.amountDue) return toast.error("Fill in all inputs!",  {id: "createRecord", position: "bottom-center"})
+    postHook(details);
+}
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+    <motion.div 
+    initial={{ y:-20, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    transition={{ duration: 0.5, ease:'easeInOut' }}
+    className='flex flex-col gap-4 items-center justify-center h-[calc(100dvh-56px)]'>
+        <p className='text-2xl tracking-wide font-semibold'>
+          Create Record
+        </p>
+        
+        <form 
+        onSubmit={handleSubmit}
+        className='flex flex-col gap-8 p-8 border-3 border-emerald-800/40 rounded-xl w-4/5 md:w-xl text-sm'>
+          <div className='flex justify-between item gap-8'>
 
-      <form onSubmit={handleSubmit}>
-        <h2 className="text-2xl font-bold mb-6 text-center">User Registration</h2>
-        
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-            Username
-          </label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={formData.username}
-            onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-            className="w-full px-3 py-2 border rounded-lg"
-          />
-        </div>
-        
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-            Full Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={(e)=> setFormData({...formData, name: e.target.value})}
-            className="w-full px-3 py-2 border rounded-lg"
-          />
-        </div>
-        
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={(e)=> setFormData({...formData, password: e.target.value})}
-            className={`w-full px-3 py-2 border rounded-lg`}
-          />
+            <div className='flex flex-col gap-4'>
+                <div className="flex flex-col">
+                    <label className='mb-4 break-words'>
+                    Unit No.
+                    </label>
+                <input 
+                    type="text"
+                    className='outline rounded p-2'
+                    value={details.unitNo}
+                    onChange={(e) => setDetails({...details, unitNo: e.target.value})}
+                    placeholder='Enter Unit No. '
+                />
+                </div>
+                <div className="flex flex-col">
+                    <label className='mb-4 break-words'>
+                    Rental Rate
+                    </label>
+                <input 
+                    type="text"
+                    className='outline rounded p-2'
+                    value={details.rentalRate}
+                    onChange={(e) => setDetails({...details, rentalRate: e.target.value})}
+                    placeholder='Enter Rental Rate '
+                />
+                </div>
+                <div className="flex flex-col">
+                    <label className='mb-4 break-words'>
+                    NRIC
+                    </label>
+                <input 
+                    type="text"
+                    className='outline rounded p-2'
+                    value={details.ICNo}
+                    onChange={(e) => setDetails({...details, ICNo: e.target.value})}
+                    placeholder='Enter NRIC '
+                />
+                </div>
+                <div className="flex flex-col">
+                    <label className='mb-4 break-words'>
+                    Tenant Name
+                    </label>
+                <input 
+                    type="text"
+                    className='outline rounded p-2'
+                    value={details.tenantName}
+                    onChange={(e) => setDetails({...details, tenantName: e.target.value})}
+                    placeholder='Enter Tenant Name '
+                />
+                </div>
+                <div className="flex flex-col">
+                    <label className='mb-4 break-words'>
+                    Email
+                    </label>
+                <input 
+                    type="text"
+                    className='outline rounded p-2'
+                    value={details.email}
+                    onChange={(e) => setDetails({...details, email: e.target.value})}
+                    placeholder='Enter Email '
+                />
+                </div>
 
-        </div>
-        
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="contactNo">
-            Contact Number
-          </label>
-          <input
-            type="text"
-            id="contactNo"
-            name="contactNo"
-            value={formData.contactNo}
-            onChange={(e)=> setFormData({...formData, contactNo: e.target.value})}
-            className="w-full px-3 py-2 border rounded-lg"
-          />
-        </div>
-        
-        <button
-          type="submit"
-          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
-        >
-          Register
-        </button>
-      </form>
-    </div>
-  );
+              </div>
+
+              <div className='flex flex-col gap-4'>
+
+                <div className="flex flex-col">
+                    <label className='mb-4 break-words'>
+                    Mailing Address
+                    </label>
+                <input 
+                    type="text"
+                    className='outline rounded p-2'
+                    value={details.mailingAddress}
+                    onChange={(e) => setDetails({...details, mailingAddress: e.target.value})}
+                    placeholder='Enter Mailing Address '
+                />
+                </div>
+                <div className="flex flex-col">
+                    <label className='mb-4 break-words'>
+                    Company Name
+                    </label>
+                <input 
+                    type="text"
+                    className='outline rounded p-2'
+                    value={details.companyName}
+                    onChange={(e) => setDetails({...details, companyName: e.target.value})}
+                    placeholder='Enter Company Name '
+                />
+                </div>
+                <div className="flex flex-col">
+                    <label className='mb-4 break-words'>
+                    Contact No.
+                    </label>
+                <input 
+                    type="text"
+                    className='outline rounded p-2'
+                    value={details.contactNo}
+                    onChange={(e) => setDetails({...details, contactNo: e.target.value})}
+                    placeholder='Enter Contact No. '
+                />
+                </div>
+                <div className="flex flex-col">
+                    <label className='mb-4 break-words'>
+                    Amount Due
+                    </label>
+                <input 
+                    type="text"
+                    className='outline rounded p-2'
+                    value={details.amountDue}
+                    onChange={(e) => setDetails({...details, amountDue: e.target.value})}
+                    placeholder='Enter Amount Due '
+                />
+                </div>
+
+              </div>
+
+          </div>
+            <motion.button 
+            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.05, backgroundColor: "rgba(16, 185, 129, 0.6)" }}
+            type='submit' 
+            className='bg-emerald-800/40 p-2 w-full rounded-xl'>
+                Submit
+            </motion.button>
+        </form>
+
+    </motion.div>
+);
 }
 
 export default CreatePost
