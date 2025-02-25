@@ -24,11 +24,17 @@ function ImageCarousel() {
         p:"Working easily means streamlining tasks, reducing complexity, and maintaining efficiency. Using the right tools, automation, and organization can make work smoother and less stressful. Prioritizing tasks, setting clear goals, and managing time effectively help avoid burnout and increase productivity. Good communication and collaboration also simplify work by ensuring everyone is aligned. Maintaining a clutter-free workspace and adopting a positive mindset contribute to a more effortless workflow. Learning to delegate and adapt to challenges makes work more manageable. When tasks are structured well, work feels lighter, allowing for better focus, creativity, and overall job satisfaction"
       }
     ];
+
+    const nextSlide = () => {
+      setCurrentIndex((prevIndex) => 
+        prevIndex === slidingImages.length - 1 ? 0 : prevIndex + 1
+      );
+    };
   
     useEffect(() => {
       const timer = setInterval(() => {
         nextSlide();
-      }, 6000);
+      }, 4000);
   
       return () => clearInterval(timer);
     }, []);
