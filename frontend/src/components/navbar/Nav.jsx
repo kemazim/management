@@ -17,15 +17,17 @@ const Nav = () => {
         {/* Content */}
         <div className="flex justify-between md:justify-start items-center">
           {/* menu */}
-          <motion.button
-          initial={{opacity: 0}}
-          animate={{opacity: 1}}
-          whileTap={{ scale: 0.95 }}
-          whileHover={{ boxShadow: "0px 4px 10px rgba(0,0,0,0.2)" }}           className="flex-shrink-0 flex items-center gap-1 cursor-pointer rounded-xl p-1 mr-5"
-           >
-          <FolderKanban className='text-emerald-800 w-7 h-7'/>
-            <span className="text-2xl font-bold">Management</span>
-          </motion.button>
+          <Link to="/">
+            <motion.button
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            whileTap={{ scale: 0.95 }}
+            whileHover={{ boxShadow: "0px 4px 10px rgba(0,0,0,0.2)" }}           className="flex-shrink-0 flex items-center gap-1 cursor-pointer rounded-xl p-1 mr-5"
+            >
+            <FolderKanban className='text-emerald-800 w-7 h-7'/>
+              <span className="text-2xl font-bold">Management</span>
+            </motion.button>
+          </Link>
 
           <div className="flex gap-1 relative">
           {/* Create Button */}

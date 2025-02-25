@@ -10,7 +10,7 @@ function App() {
       <Nav/>
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
-        <Route path="/create" element={<CreatePost/>}/>
+        <Route path="/create" element={<CreatePost />}/>
       </Routes>
     </div>
   )
