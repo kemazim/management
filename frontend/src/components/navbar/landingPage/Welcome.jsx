@@ -1,10 +1,17 @@
 import React from 'react'
 import { motion } from 'motion/react'
 import { Coffee, Gauge } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 function Welcome() {
+  const navigate = useNavigate();
+
   return (
-    <div className='flex flex-col justify-center items-center'>
+    <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1, ease: "easeInOut" }}
+     className='flex flex-col justify-center items-center'>
         <div className='w-full flex justify-center py-7 bg-emerald-800/40 tracking-widest text-2xl font-bold'>
             <p>Welcome to the Management System</p>
         </div>
@@ -32,7 +39,11 @@ function Welcome() {
               y: [-5, 5, -5], 
               opacity: [0.6, 1, 0.6] 
             }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            transition={{
+               duration: 1.5, 
+               repeat: Infinity, 
+               ease: "easeInOut" 
+              }}
             >
               <Coffee className="w-20 h-20" />
             </motion.div>
@@ -52,12 +63,13 @@ function Welcome() {
               ease: "easeInOut",
             },
           }}
+          onClick={() => navigate("/create")}
            className='border-3 p-5 rounded-full cursor-pointer font-bold'>
             Create Your Record Now!
           </motion.button>
           </div>
         </div>
-    </div>
+    </motion.div>
   )
 }
 
