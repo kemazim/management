@@ -1,6 +1,7 @@
 package com.example.ManagementSystem.controller;
 
 import com.example.ManagementSystem.model.Records;
+import com.example.ManagementSystem.model.StatusMessage;
 import com.example.ManagementSystem.service.RecordService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +36,11 @@ public class RecordController {
         return recordService.getCountRecord(record);
     }
 
+    @GetMapping("/userExist/{unitNo}")
+    public StatusMessage checkUserExist(@PathVariable String unitNo){
+        return recordService.checkUserExist(unitNo);
+    }
+
     @GetMapping("/load")
     public String loadData() {
         recordService.load();
@@ -47,8 +53,8 @@ public class RecordController {
     }
 
     @DeleteMapping("/deleterecord")
-    public ResponseEntity<String> deleteRecord(@RequestParam String unitNo, @RequestParam String icNo) {
-        String result = recordService.deleteRecord(unitNo, icNo);
+    public ResponseEntity<String> deleteRecord(@RequestParam String unitNo, @RequestParam String icno) {
+        String result = recordService.deleteRecord(unitNo, icno);
         return "Record Not Found".equals(result) ? ResponseEntity.badRequest().body(result) : ResponseEntity.ok(result);
     }
 }

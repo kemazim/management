@@ -1,6 +1,7 @@
 package com.example.ManagementSystem.service;
 
 import com.example.ManagementSystem.model.Records;
+import com.example.ManagementSystem.model.StatusMessage;
 import com.example.ManagementSystem.repository.RecordRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ public class RecordService {
         this.recordRepository = recordRepository;
     }
 
+    StatusMessage statusMessage = new StatusMessage("","");
 //    public Optional<Records> getRecordByUnitNo(String unitNo) {
 ////        if(unitNo != "0") throw new RuntimeException("Error salah");
 //        System.out.println(unitNo);
@@ -70,6 +72,19 @@ public class RecordService {
             return "Record Not Found";
         } else {
             return "Record Found!";
+        }
+    }
+
+    public StatusMessage checkUserExist(String unitNo) {
+        Optional<Records> countrec = recordRepository.findById(unitNo);
+        if (countrec.isEmpty()) {
+            statusMessage.setMessage("Record Not Found!");
+            statusMessage.setStatus("400");
+            return statusMessage;
+        } else {
+            statusMessage.setMessage("Record Found!");
+            statusMessage.setStatus("200");
+            return statusMessage;
         }
     }
 
