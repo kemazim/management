@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { useDeleteHook, useGetHook } from '../../../hooks/hooks';
 import { selectData } from '../../../redux/dataSlice';
 import LoadingSpinner from '../LoadingSpinner';
+import { useNavigate } from 'react-router-dom';
 
 function GetAllTenants() {
     const rawTenants = useSelector(selectData)
