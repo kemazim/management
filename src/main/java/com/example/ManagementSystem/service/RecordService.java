@@ -3,6 +3,7 @@ package com.example.ManagementSystem.service;
 import com.example.ManagementSystem.model.Records;
 import com.example.ManagementSystem.model.StatusMessage;
 import com.example.ManagementSystem.repository.RecordRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -88,5 +89,33 @@ public class RecordService {
         }
     }
 
+    public ResponseEntity<String> updateRecord(String unitNo, String rentalRate) {
+//        if (!unitNo.equals(unitNo)) {
+//            return ResponseEntity.badRequest().body("Unit No not found");
+//        }
+//
+//        Optional<Records> existingRecordOptional = recordRepository.findById(unitNo);
+//
+//        if (existingRecordOptional.isEmpty()) {
+//            return ResponseEntity.notFound().build();
+//        }
+        //     Records existingRecord = existingRecordOptional.get();
+        //    // existingRecord.setRentalDate(record.getRentalDate());
+        //     existingRecord.setRentalRate(record.getRentalRate());
+        //    // existingRecord.setAmountDue(record.getAmountDue());
+
+        //try catch method
+        try {
+            recordRepository.updateRecord(unitNo,rentalRate);
+        } catch (Exception e) {
+            if (!recordRepository.existsById(unitNo)) {
+                return ResponseEntity.notFound().build();
+            } else {
+                throw e;
+            }
+        }
+
+        return ResponseEntity.noContent().build();
+    }
 
 }

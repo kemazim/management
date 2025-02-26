@@ -5,16 +5,17 @@ import { CircleCheck, CircleX } from 'lucide-react';
 import { useDeleteHook, useGetHook } from '../../../hooks/hooks';
 import { selectData } from '../../../redux/dataSlice';
 import LoadingSpinner from '../LoadingSpinner';
+import { useNavigate } from 'react-router-dom';
 
 function GetAllTenants() {
     const rawTenants = useSelector(selectData)
     const tenants = useMemo(() => rawTenants, [rawTenants]);
-    const {deleteHook, deleteLoading} = useDeleteHook()
-
+    const {deleteHook, deleteLoading} = useDeleteHook();
+    const navigate = useNavigate();
     const { getHook, loading } = useGetHook();
       useEffect(()=>{
         getHook();
-      },[tenants])
+      },[])
     
       const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -28,6 +29,7 @@ function GetAllTenants() {
 
       const handleDelete = (tenant) => {
         deleteHook(tenant)
+       
       }
       
       if(loading || deleteLoading) return <LoadingSpinner />

@@ -57,4 +57,9 @@ public class RecordController {
         String result = recordService.deleteRecord(unitNo, icno);
         return "Record Not Found".equals(result) ? ResponseEntity.badRequest().body(result) : ResponseEntity.ok(result);
     }
+
+    @PutMapping("/updaterecord/{unitNo}/{rentalRate}")
+    public ResponseEntity<String> updateRecord(@PathVariable String unitNo, @PathVariable String rentalRate ) {
+        return recordService.updateRecord(unitNo, rentalRate);
+    }
 }

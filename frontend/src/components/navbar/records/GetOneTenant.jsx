@@ -37,7 +37,7 @@ function GetOneTenant() {
                 className='focus:outline-none'
                 placeholder='Search Unit'
                 value={unitNo}
-                onChange={()=> setUnitNo(e.target.value)}
+                onChange={(e)=> setUnitNo(e.target.value)}
                 />
                 <motion.button
                 whileTap={{scale: 0.9}}

@@ -2,7 +2,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { getData, getOneTenantData, putData } from "../redux/dataSlice";
-
+import { useNavigate } from 'react-router-dom';
 // const initialData = [
 //     {
 //         "unitNo": "Unit 1",
@@ -133,7 +133,7 @@ export const useGetOneTenantHook = () => {
     const getOneTenantHook = async(unitNo) => {
         setOneLoading(true);
         try {
-            TODO: endpoint & fetch
+            //TODO: endpoint & fetch
             const res = await fetch(`http://localhost:8092/record?unitNo=${unitNo}`)
             if(res.status !== 200){
                 throw new Error(data.Error)
@@ -153,7 +153,7 @@ export const useGetOneTenantHook = () => {
 
 export const useDeleteHook = () => {
     const [deleteLoading, setDeleteLoading] = useState(false)
-
+    const navigate = useNavigate();
     const deleteHook = async(tenant) => {
         setDeleteLoading(true);
         try {
@@ -166,7 +166,8 @@ export const useDeleteHook = () => {
             if(res.status !== 200){
                 throw new Error(data.Error)
             }
-            const data = await res.json()
+            const data = await res
+            navigate("/records")
             toast.success("Delete Success", {id: "delete data"})
         } catch (error) {
             toast.error(error.message)
