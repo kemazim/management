@@ -4,7 +4,7 @@ import Welcome from '../components/navbar/landingPage/Welcome'
 
 function LandingPage() {
   return (
-    <div>
+    <div className='h-[calc(100vh-56px)] overflow-y-hidden'>
         <ImageCarousel/>
         <Welcome />
     </div>

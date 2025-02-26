@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Nav = () => {
 
   return (
-    <nav className="bg-white shadow shadow-emerald-800 sticky top-0 z-50">
+    <nav className="bg-white shadow shadow-blue-800 sticky top-0 z-50">
       <motion.div
         initial={{ maxHeight: 56}}
         animate={{ maxHeight: 56 }}
@@ -22,7 +22,7 @@ const Nav = () => {
             whileTap={{ scale: 0.95 }}
             whileHover={{ boxShadow: "0px 4px 10px rgba(0,0,0,0.2)" }}           className="flex-shrink-0 flex items-center gap-1 cursor-pointer rounded-xl p-1 mr-5"
             >
-            <FolderKanban className='text-emerald-800 w-7 h-7'/>
+            <FolderKanban className='text-blue-800 w-7 h-7'/>
               <span className="text-2xl font-bold">Management</span>
             </motion.button>
           </Link>
@@ -36,7 +36,6 @@ const Nav = () => {
             whileTap={{ scale: 0.95 }}
                 className="text-gray-600 hover:text-gray-900 px-1 py-1.5  font-medium flex gap-2 items-center max-w-3xl rounded-xl cursor-pointer text-md mr-2"
               >
-                {/* TODO: assign correct href */}
                 <Link to="/create">
                     Create
                 </Link>
@@ -49,8 +48,7 @@ const Nav = () => {
             whileTap={{ scale: 0.95 }}
                 className="text-gray-600 hover:text-gray-900 px-1 py-1.5  font-medium flex gap-2 items-center max-w-3xl rounded-xl cursor-pointer text-md"
               >
-                {/* TODO: assign correct href */}
-                <Link to="/">
+                <Link to="/records">
                     Records
                 </Link>
             </motion.button>

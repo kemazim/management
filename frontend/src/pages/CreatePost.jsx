@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { motion } from 'motion/react';
 import { usePostHook } from '../hooks/hooks';
 import toast from 'react-hot-toast';
+import LoadingSpinner from '../components/navbar/LoadingSpinner';
 
 function CreatePost() {
-  const [details, setDetails] = useState({
+    const [details, setDetails] = useState({
     unitNo: '',
     rentalRate: 0,
     icno: '',
@@ -15,16 +16,18 @@ function CreatePost() {
     contactNo: '',
     amountDue: 0,
     rentalDate: '',
-})
+    })
 
-const {postHook , loading} = usePostHook();
+    const {postHook , loading} = usePostHook();
 
 
-const handleSubmit = (e) => {
+    const handleSubmit = (e) => {
     e.preventDefault();
     if(!details.unitNo || !details.rentalRate || !details.icno || !details.tenantName || !details.email || !details.mailingAddress || !details.companyName || !details.contactNo || !details.amountDue) return toast.error("Fill in all inputs!",  {id: "createRecord", position: "bottom-center"})
     postHook(details);
-}
+    }
+
+    if (loading) return <LoadingSpinner />
 
   return (
     <motion.div 
@@ -35,10 +38,9 @@ const handleSubmit = (e) => {
         <p className='text-2xl tracking-wide font-semibold'>
           Create Record
         </p>
-        
         <form 
         onSubmit={handleSubmit}
-        className='flex flex-col gap-8 py-8 px-15 border-3 border-emerald-800/40 rounded-xl w-xl text-sm'>
+        className='flex flex-col gap-8 py-8 px-15 border-3 border-blue-800/40 rounded-xl w-xl text-sm'>
           <div className='flex justify-between item gap-8'>
 
             <div className='flex flex-col gap-4'>
@@ -163,9 +165,9 @@ const handleSubmit = (e) => {
           </div>
             <motion.button 
             whileTap={{ scale: 0.95 }}
-            whileHover={{ scale: 1.05, backgroundColor: "rgba(16, 185, 129, 0.6)" }}
+            whileHover={{ scale: 1.05, backgroundColor: "rgba(21, 123, 255, 0.6)" }}
             type='submit' 
-            className='bg-emerald-800/40 p-2 w-full rounded-xl'>
+            className='bg-blue-800/40 p-2 w-full rounded-xl'>
                 Submit
             </motion.button>
         </form>
