@@ -22,8 +22,8 @@ function GetAllTenants() {
         return date.toLocaleDateString('en-MY');
       };
 
-      const handleDelete = (tenant) => {
-        deleteHook(tenant)
+      const handleDelete = async(tenant) => {
+        await deleteHook(tenant)
         setRefresh((prev) => !prev);      
     }
       
