@@ -83,7 +83,6 @@ export const useGetOneTenantHook = () => {
 
 export const useDeleteHook = () => {
     const [deleteLoading, setDeleteLoading] = useState(false)
-    const navigate = useNavigate();
     const deleteHook = async(tenant) => {
         setDeleteLoading(true);
         try {
