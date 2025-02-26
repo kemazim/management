@@ -56,7 +56,7 @@ function Welcome() {
           }}
           whileHover={{
             scale: [1, 1.01, 1],
-            color: ["#000000", "#009900", "#000000"],
+            color: ["#000000", "#0000e6", "#000000"],
             transition: {
               duration: 2, 
               repeat: Infinity, 

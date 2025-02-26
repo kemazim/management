@@ -27,7 +27,7 @@ function CreatePost() {
     postHook(details);
     }
 
-
+    if (loading) return <LoadingSpinner />
 
   return (
     <motion.div 
@@ -35,11 +35,9 @@ function CreatePost() {
     animate={{ y: 0, opacity: 1 }}
     transition={{ duration: 0.5, ease:'easeInOut' }}
     className='flex flex-col gap-4 items-center justify-center h-[calc(100dvh-56px)]'>
-        {loading && <LoadingSpinner />}
         <p className='text-2xl tracking-wide font-semibold'>
           Create Record
         </p>
-        
         <form 
         onSubmit={handleSubmit}
         className='flex flex-col gap-8 py-8 px-15 border-3 border-blue-800/40 rounded-xl w-xl text-sm'>
@@ -167,7 +165,7 @@ function CreatePost() {
           </div>
             <motion.button 
             whileTap={{ scale: 0.95 }}
-            whileHover={{ scale: 1.05, backgroundColor: "rgba(16, 185, 129, 0.6)" }}
+            whileHover={{ scale: 1.05, backgroundColor: "rgba(21, 123, 255, 0.6)" }}
             type='submit' 
             className='bg-blue-800/40 p-2 w-full rounded-xl'>
                 Submit
