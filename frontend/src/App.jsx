@@ -3,19 +3,18 @@ import { Route, Routes } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
 import CreatePost from './pages/CreatePost'
 import { Toaster } from 'react-hot-toast';
-import CreatePage from './pages/CreatePage';
-
+import GetData from './pages/GetData';
 
 function App() {
 
   return (
-    <div className='h-screen overflow-y-hidden'>
+    <div>
       <Toaster />
       <Nav />
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
         <Route path="/create" element={<CreatePost />}/>
-        <Route path="/records" element={<CreatePage />}/>
+        <Route path="/records" element={<GetData />}/>
       </Routes>
     </div>
   )

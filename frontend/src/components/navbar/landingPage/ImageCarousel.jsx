@@ -41,7 +41,7 @@ function ImageCarousel() {
   
     return (
       <div
-       className="relative w-full shadow shadow-emerald-800">
+       className="relative w-full shadow shadow-blue-800">
         <div className="relative h-[40vh] md:h-[60vh] overflow-hidden">
           {slidingImages.map((slide, index) => (
             <motion.div
@@ -79,7 +79,7 @@ function ImageCarousel() {
               key={index}
               onClick={() => setCurrentIndex(index)}
               className={`w-1/3 h-2 transition-colors duration-500 ${
-                index === currentIndex ? 'bg-emerald-800/50' : 'bg-white/50'
+                index === currentIndex ? 'bg-blue-800/50' : 'bg-white/50'
               }`}
             />
           ))}

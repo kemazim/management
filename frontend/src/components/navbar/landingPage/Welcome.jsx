@@ -12,11 +12,11 @@ function Welcome() {
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 1, ease: "easeInOut" }}
      className='flex flex-col justify-center items-center'>
-        <div className='w-full flex justify-center py-7 bg-emerald-800/40 tracking-widest text-2xl font-bold'>
+        <div className='w-full flex justify-center py-7 bg-blue-800/40 tracking-widest text-2xl font-bold'>
             <p>Welcome to the Management System</p>
         </div>
         <div className='flex justify-center items-center w-full'>
-          <div className='w-1/3 flex flex-col justify-center items-center p-16 border-r-2 border-r-emerald-800/50'>
+          <div className='w-1/3 flex flex-col justify-center items-center p-16 border-r-2 border-r-blue-800/50'>
             <p className='text-xl font-semibold mb-6'>Fast and Easy</p>
             <motion.div 
             animate={{ 
@@ -32,7 +32,7 @@ function Welcome() {
             </motion.div>
           </div>
           <div className='w-1/3 flex flex-col justify-center items-center p-16 
-          border-r-2 border-r-emerald-800/50'>
+          border-r-2 border-r-blue-800/50'>
             <p className='text-xl font-semibold mb-6'>Robust System</p>
             <motion.div 
             animate={{ 
