@@ -27,9 +27,9 @@ public class RecordController {
 
     @GetMapping("/getAllRecord")
     public List<Records> getAllRecord() {
-       return recordService.getAllRecords();
+        return recordService.getAllRecords();
 
-        }
+    }
 
     @GetMapping("/countrecord")
     public String getCountRecord(@RequestBody Records record) {

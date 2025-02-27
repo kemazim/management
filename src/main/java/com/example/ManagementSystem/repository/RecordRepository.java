@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 public interface RecordRepository extends JpaRepository<Records, String> {
 
-//    @Query(value = "SELECT * FROM records limit 1", nativeQuery = true)
+    //    @Query(value = "SELECT * FROM records limit 1", nativeQuery = true)
 //    Optional<Records> findByUnitNo(String unitNo);
     Optional<Records> findByUnitNoAndICNo(String unitNo, String ICNo);
 

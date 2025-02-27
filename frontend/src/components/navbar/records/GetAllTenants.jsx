@@ -1,7 +1,6 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { motion } from 'motion/react';
-import { CircleCheck, CircleX } from 'lucide-react';
 import { useDeleteHook, useGetHook } from '../../../hooks/hooks';
 import { selectData } from '../../../redux/dataSlice';
 import LoadingSpinner from '../LoadingSpinner';
@@ -10,27 +9,23 @@ import { useNavigate } from 'react-router-dom';
 function GetAllTenants() {
     const rawTenants = useSelector(selectData)
     const tenants = useMemo(() => rawTenants, [rawTenants]);
-    const {deleteHook, deleteLoading} = useDeleteHook();
-    const navigate = useNavigate();
+    const {deleteHook, deleteLoading} = useDeleteHook()
+    const [refresh, setRefresh] = useState(false)
+
     const { getHook, loading } = useGetHook();
       useEffect(()=>{
         getHook();
-      },[])
+      },[refresh])
     
       const formatDate = (dateString) => {
         const date = new Date(dateString);
         return date.toLocaleDateString('en-MY');
       };
-    
-      const handleToggleActive = (index) => {
-        const updatedTenants = [...tenants];
-        updatedTenants[index].isActive = !updatedTenants[index].isActive;
-      };
 
-      const handleDelete = (tenant) => {
-        deleteHook(tenant)
-       
-      }
+      const handleDelete = async(tenant) => {
+        await deleteHook(tenant)
+        setRefresh((prev) => !prev);      
+    }
       
       if(loading || deleteLoading) return <LoadingSpinner />
 

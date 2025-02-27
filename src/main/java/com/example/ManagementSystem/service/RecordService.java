@@ -22,7 +22,7 @@ public class RecordService {
 
     StatusMessage statusMessage = new StatusMessage("","");
 //    public Optional<Records> getRecordByUnitNo(String unitNo) {
-////        if(unitNo != "0") throw new RuntimeException("Error salah");
+    ////        if(unitNo != "0") throw new RuntimeException("Error salah");
 //        System.out.println(unitNo);
 //        return recordRepository.findByUnitNo(unitNo);
 //    }
