@@ -167,7 +167,6 @@ export const useDeleteHook = () => {
                 throw new Error(data.Error)
             }
             const data = await res
-            navigate("/records")
             toast.success("Delete Success", {id: "delete data"})
         } catch (error) {
             toast.error(error.message)
